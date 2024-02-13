@@ -1,0 +1,92 @@
+Função inicializar_palavra_secreta():
+    palavra_secreta = selecionar_palavra_aleatória()  // Função para selecionar uma palavra aleatória do banco de palavras
+    retornar palavra_secreta
+
+Função exibir_forca(vidas_restantes):
+    // Aqui você pode exibir a forca de acordo com as vidas restantes do jogador
+    // Isso pode ser feito de diversas formas, como usando arte ASCII ou imagens pré-definidas
+
+Função exibir_palavra_mascarada(palavra_secreta, letras_descobertas):
+    palavra_mascarada = ""
+    Para cada letra na palavra_secreta:
+        Se letra estiver em letras_descobertas:
+            Concatenar letra a palavra_mascarada
+        Senão:
+            Concatenar "_" a palavra_mascarada
+    Exibir palavra_mascarada
+
+Função adivinhar_letra():
+    letra = obter_entrada_do_jogador()  // Função para receber a entrada do jogador
+    retornar letra
+
+Função verificar_palpite(letra, palavra_secreta):
+    Se letra estiver em palavra_secreta:
+        retornar Verdadeiro
+    Senão:
+        retornar Falso
+
+// Função principal do jogo
+Função jogo_da_forca():
+    palavra_secreta = inicializar_palavra_secreta()
+    letras_descobertas = []
+    vidas_restantes = 7  // Pode variar dependendo das regras do jogo
+
+    Enquanto vidas_restantes > 0 e palavra_não_descoberta:
+        exibir_forca(vidas_restantes)
+        exibir_palavra_mascarada(palavra_secreta, letras_descobertas)
+        letra = adivinhar_letra()
+        Se letra já foi tentada:
+            // Mensagem informando ao jogador que a letra já foi tentada
+        Senão:
+            Se verificar_palpite(letra, palavra_secreta):
+                // Mensagem informando ao jogador que a letra foi encontrada
+                Adicionar letra a letras_descobertas
+            Senão:
+                // Mensagem informando ao jogador que a letra não foi encontrada
+                Decrementar vidas_restantes
+
+    Se palavra_não_descoberta:
+        // Mensagem informando ao jogador que ele perdeu e exibindo a palavra secreta
+    Senão:
+        // Mensagem informando ao jogador que ele ganhou
+
+
+1) Mostrar mensagem de boas-vindas:
+    Escrever("Bem-vindo ao Jogo da Forca!")
+
+2) Selecionar uma palavra aleatória do banco de palavras:
+    palavra_secreta = selecionar_palavra_aleatória()
+
+3) Inicializar a lista de letras descobertas:
+    letras_descobertas = []
+
+4) Definir o número máximo de vidas:
+    vidas_restantes = 7
+
+5) Enquanto o número de vidas restantes for maior que zero e a palavra não tiver sido completamente descoberta:
+    5.1) Exibir a forca atual (representada por vidas_restantes)
+        exibir_forca(vidas_restantes)
+    
+    5.2) Exibir a palavra mascarada (com as letras descobertas reveladas):
+        exibir_palavra_mascarada(palavra_secreta, letras_descobertas)
+
+    5.3) Solicitar ao jogador para adivinhar uma letra:
+        letra = obter_entrada_do_jogador()
+
+    5.4) Verificar se a letra já foi tentada:
+        Se letra já foi tentada:
+            Escrever("Você já tentou essa letra. Tente outra.")
+
+    5.5) Verificar se a letra está na palavra secreta:
+        Se letra está na palavra_secreta:
+            Adicionar letra a letras_descobertas
+            Se todas as letras da palavra secreta estiverem em letras_descobertas:
+                Escrever("Parabéns! Você venceu!")
+                Encerrar o jogo
+        Senão:
+            Decrementar vidas_restantes
+
+6) Se o jogador ainda tiver vidas restantes:
+    Escrever("Você perdeu! A palavra era: " + palavra_secreta)
+Senão:
+    Escrever("Você venceu! Parabéns!")
